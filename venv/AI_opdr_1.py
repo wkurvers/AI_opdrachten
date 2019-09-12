@@ -2,7 +2,6 @@ start = {'man': 'left', 'goat': 'left', 'wolf': 'left', 'cabbage': 'left'}
 visited = []
 values = []
 
-
 # check of de combinatie mag
 def safety_check(successors):
     if successors['man'] == successors['goat']:
@@ -15,10 +14,10 @@ def safety_check(successors):
         return True
 
 
-def check_child(child, successors):
+def check_child(child, values):
     if safety_check(child):
-        successors.append(child)
-    return successors
+        values.append(child)
+    return values
 
 
 # links wordt rechts en rechts wordt link voor het gene aangegeven in who function call.
@@ -47,8 +46,6 @@ def travel(successors):
             take_boat('man', child)
             take_boat(item, child)
             check_child(child, values)
-        # else:
-    # print "unsafe state", child
     return values
 
 
