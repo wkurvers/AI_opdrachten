@@ -2,6 +2,7 @@ start = {'man': 'left', 'goat': 'left', 'wolf': 'left', 'cabbage': 'left'}
 visited = []
 values = []
 
+
 # check of de combinatie mag
 def safety_check(successors):
     if successors['man'] == successors['goat']:
@@ -13,7 +14,7 @@ def safety_check(successors):
     else:
         return True
 
-
+# voeg correcte combi toe aan een array van juiste combi's
 def check_child(child, values):
     if safety_check(child):
         values.append(child)
@@ -61,10 +62,8 @@ def find_answer(start):
                 successors = child
                 visited.append(successors)
                 break
+    [print(visit) for visit in visited]
     return successors
 
 
 find_answer(start)
-
-for visit in visited:
-    print(visit)
