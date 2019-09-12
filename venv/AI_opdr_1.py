@@ -1,5 +1,6 @@
 start = {'man': 'left', 'goat': 'left', 'wolf': 'left', 'cabbage': 'left'}
 visited = []
+values = []
 
 
 # check of de combinatie mag
@@ -36,20 +37,19 @@ def getList(start):
 
 # ga heen en weer en blijf checken of het mag
 def travel(successors):
-    children = []
     child = successors.copy()
     take_boat('man', child)
-    check_child(child, children)
-    for ent in getList(start):
+    check_child(child, values)
+    for item in getList(start):
         # haal iets op uit lijst
-        if successors[ent] == successors['man']:
+        if successors[item] == successors['man']:
             child = successors.copy()
             take_boat('man', child)
-            take_boat(ent, child)
-            check_child(child, children)
+            take_boat(item, child)
+            check_child(child, values)
         # else:
     # print "unsafe state", child
-    return children
+    return values
 
 
 # begin met uitvoeren
